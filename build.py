@@ -27,6 +27,16 @@ import sys
 import urllib.request
 from pathlib import Path
 
+# Windows' console defaults to a legacy codepage (cp1252 etc.) that
+# can't print characters like ✓/⚠/✗ used throughout this script's
+# progress messages - this crashed the GitHub Actions Windows build
+# with UnicodeEncodeError the moment it tried to print a checkmark.
+# Forcing stdout/stderr to UTF-8 fixes it regardless of platform.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
+
 APP_NAME = "Blockline"
 MAIN_SCRIPT = "main.py"
 LOGO_CANDIDATES = ["logo.png", "logo.jpg", "logo.jpeg"]
