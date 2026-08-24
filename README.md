@@ -72,17 +72,16 @@ The concept and architecture are being designed.
 ## Roadmap
 
 ### Core System
-- [ ] Block editor
+- [X] Block editor
 - [ ] Code generation system
 - [ ] Language template system
-- [ ] Project management
+- [X] Project management
 
 ### Advanced Features
-- [ ] Code importing
-- [ ] Code-to-block conversion
+- [X] Code importing
+- [X] Code-to-block conversion
 - [ ] Plugin system
-- [ ] Custom language support
-- [ ] Community block sharing
+- [X] Custom language support
 
 ## Future Vision
 
@@ -95,3 +94,5 @@ A different way to create software.
 ## License
 
 MIT
+<img width="1366" height="696" alt="Blockline 2026-08-24 18-43-52" src="https://github.com/user-attachments/assets/94a86123-9b0a-4232-a3a9-a947dd7ef94f" />
+<img width="1920" height="1080" alt="Blockline" src="https://github.com/user-attachments/assets/b878a455-ffbd-4e1c-a40d-a6f50821a985" />
