@@ -19,6 +19,13 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
+    env:
+      # Second layer of defense alongside build.py's own stdout
+      # reconfigure() call: forces the whole interpreter into UTF-8
+      # mode before any code runs, so Windows' default cp1252 console
+      # can't choke on Unicode symbols (checkmarks etc.) in build
+      # output.
+      PYTHONUTF8: "1"
     steps:
       - uses: actions/checkout@v4
 

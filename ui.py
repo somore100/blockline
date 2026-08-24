@@ -357,9 +357,28 @@ CATEGORY_COLORS = {
     "Custom Blocks": "#ff6b9d"
 }
 
-CUSTOM_BLOCKS_PATH = os.path.join("user_data", "custom_blocks.json")
-BLOCKLINE_SAVES_PATH = "blockline_saves"
-APP_SETTINGS_PATH = os.path.join("user_data", "app_settings.json")
+def get_persistent_data_path():
+    """
+    Where user data actually lives - user_data/, blockline_saves/, etc.
+    Always next to the real executable/script, NEVER just 'whatever the
+    current working directory happens to be'. Running from source that
+    distinction doesn't matter (CWD is normally the script's own
+    folder anyway), but a built .exe/AppImage can be launched from
+    anywhere (double-clicked from Downloads, a desktop shortcut,
+    wherever) - and worse, PyInstaller's actual working files live in
+    a temporary extraction folder that's deleted when the app closes,
+    so relying on CWD there would risk data vanishing on exit with no
+    warning. Mirrors the same logic in main.py.
+    """
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(os.path.abspath(sys.executable))
+    return os.path.dirname(os.path.abspath(__file__))
+
+
+_PERSISTENT_DATA_PATH = get_persistent_data_path()
+CUSTOM_BLOCKS_PATH = os.path.join(_PERSISTENT_DATA_PATH, "user_data", "custom_blocks.json")
+BLOCKLINE_SAVES_PATH = os.path.join(_PERSISTENT_DATA_PATH, "blockline_saves")
+APP_SETTINGS_PATH = os.path.join(_PERSISTENT_DATA_PATH, "user_data", "app_settings.json")
 
 DEFAULT_SETTINGS = {
     "default_language": "python",
@@ -884,8 +903,9 @@ class BlocklineUI(tk.Tk):
     
     def load_app_settings(self):
         """Load app settings from JSON file, filling in any missing keys with defaults."""
-        if not os.path.exists("user_data"):
-            os.makedirs("user_data")
+        user_data_dir = os.path.dirname(APP_SETTINGS_PATH)
+        if not os.path.exists(user_data_dir):
+            os.makedirs(user_data_dir)
         settings = dict(DEFAULT_SETTINGS)
         if os.path.exists(APP_SETTINGS_PATH):
             try:
@@ -898,8 +918,9 @@ class BlocklineUI(tk.Tk):
 
     def save_app_settings(self):
         """Save current app settings to JSON file"""
-        if not os.path.exists("user_data"):
-            os.makedirs("user_data")
+        user_data_dir = os.path.dirname(APP_SETTINGS_PATH)
+        if not os.path.exists(user_data_dir):
+            os.makedirs(user_data_dir)
         try:
             with open(APP_SETTINGS_PATH, "w") as f:
                 json.dump(self.settings, f, indent=2)
@@ -915,8 +936,9 @@ class BlocklineUI(tk.Tk):
 
     def load_custom_blocks_data(self):
         """Load custom blocks from JSON file"""
-        if not os.path.exists("user_data"):
-            os.makedirs("user_data")
+        user_data_dir = os.path.dirname(APP_SETTINGS_PATH)
+        if not os.path.exists(user_data_dir):
+            os.makedirs(user_data_dir)
         if os.path.exists(CUSTOM_BLOCKS_PATH):
             try:
                 with open(CUSTOM_BLOCKS_PATH, "r") as f:
@@ -942,8 +964,9 @@ class BlocklineUI(tk.Tk):
         dicts), the real file on disk is never touched, so it can't be
         left half-written/corrupted the way a direct write can.
         """
-        if not os.path.exists("user_data"):
-            os.makedirs("user_data")
+        user_data_dir = os.path.dirname(APP_SETTINGS_PATH)
+        if not os.path.exists(user_data_dir):
+            os.makedirs(user_data_dir)
 
         # Defensive: strip anything that isn't JSON-safe (e.g. a
         # generate_code function accidentally attached to a block dict)
@@ -3409,7 +3432,7 @@ class BlocklineUI(tk.Tk):
         name_entry.select_range(0, tk.END)
 
         tk.Label(
-            dialog, text=f"App folder is: ./{BLOCKLINE_SAVES_PATH}/",
+            dialog, text=f"App folder is: {BLOCKLINE_SAVES_PATH}",
             bg=DARK_PANEL, fg="#888888", font=("Segoe UI", 8, "italic")
         ).pack(pady=(12, 2))
 
