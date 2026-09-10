@@ -1,98 +1,98 @@
+
+ 
 # Blockline
 
-A scalable visual programming environment designed to make coding easier without limiting advanced users.
+**A scalable visual programming environment** — built to make coding easier without limiting advanced users.
 
-Blockline is a visual code editor that focuses on solving one major problem:
-**Remembering exact syntax.**
+![Status](https://img.shields.io/badge/status-planned%20%2F%20in%20development-yellow)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-Unlike many block-based programming tools that are designed mainly for education and become difficult to scale, Blockline aims to provide a professional workflow where users can visually build real code while keeping the flexibility of traditional programming.
+Blockline is a visual code editor that solves one specific problem: **remembering exact syntax**. Unlike most block-based tools, which are built for education and hit a ceiling fast, Blockline is designed as a professional workflow — a way to visually build *real* code without losing the flexibility of traditional programming.
+
+## Preview
+
+<p align="center">
+  <img src="Blockline_2026-08-24_18-43-52.png" width="70%" alt="Blockline editor preview" />
+</p>
 
 ## The Idea
 
-Most visual programming tools are either:
+Most visual programming tools fall into one of these traps:
+
 - Made for beginners and children
 - Too limited for larger projects
-- Difficult to transition into real programming
+- Hard to transition out of into real programming
 
-Blockline takes a different approach.
-
-Instead of replacing code completely, Blockline works as a visual layer on top of programming languages.
-Users build logic using templates, variables, and customizable blocks, while Blockline generates properly formatted code automatically.
+Blockline takes a different approach: instead of replacing code, it works as a **visual layer on top of programming languages**. You build logic using templates, variables, and customizable blocks, and Blockline generates properly formatted code automatically.
 
 ## Features
 
-### Visual Code Building
+**Visual Code Building**
 - Build programs using blocks
-- Generate real source code
-- Avoid syntax mistakes
-- Focus on logic instead of formatting
+- Generate real, readable source code
+- Avoid syntax mistakes entirely
+- Focus on logic, not formatting
 
-### Multi-Language Support
-Blockline is designed to support multiple programming languages.
+**Multi-Language Support**
+Planned support: Python, JavaScript, C/C++, and custom user-added languages. Users will be able to define their own language definitions and block systems.
 
-Planned support:
-- Python
-- JavaScript
-- C/C++
-- Custom user-added languages
+**Code ↔ Block Conversion**
+A two-way workflow — Blocks → Code, and Code → Blocks. Start visually and switch to manual editing anytime, or import existing code and convert it into blocks.
 
-Users will be able to create their own language definitions and block systems.
+**Custom Blocks**
+Advanced users can build custom templates, custom logic blocks, and custom language extensions.
 
-### Code ↔ Block Conversion
-Two-way workflow:
-Blocks → Code
-Code → Blocks
+## Who It's For
 
-Users can start visually and continue manually editing code, or import existing code and convert it into blocks.
-
-### Custom Blocks
-Advanced users can create:
-- Custom templates
-- Custom logic blocks
-- Custom language extensions
-
-## Target Users
-
-Blockline is designed for:
-
-### Beginners
-Learn programming concepts without worrying about syntax.
-
-### Intermediate Developers
-Speed up development and reduce repetitive coding.
-
-### Advanced Developers
-Create reusable templates and workflows.
+| User | Benefit |
+|---|---|
+| **Beginners** | Learn programming concepts without worrying about syntax |
+| **Intermediate developers** | Speed up development, cut repetitive coding |
+| **Advanced developers** | Build reusable templates and workflows |
 
 ## Current Status
 
-🟡 Planned / In development
-The concept and architecture are being designed.
+🟡 Planned / in development — the concept and architecture are being designed.
 
 ## Roadmap
 
-### Core System
-- [X] Block editor
+**Core System**
+- [ ] Block editor
 - [ ] Code generation system
 - [ ] Language template system
-- [X] Project management
+- [ ] Project management
 
-### Advanced Features
-- [X] Code importing
-- [X] Code-to-block conversion
+**Advanced Features**
+- [ ] Code importing
+- [ ] Code-to-block conversion
 - [ ] Plugin system
-- [X] Custom language support
+- [ ] Custom language support
+
+## 👀 Sneak Peek: V2
+
+A redesign is in the works that moves Blockline from a single flat canvas to a **node-and-wire model**:
+
+- **Nodes instead of one big canvas** — functions, entry points, and logic become individual nodes you open and edit on their own, then arrange visually on a file-level map.
+- **Wires you can see *and* draw** — calls between nodes show up as connections automatically, and dragging a wire between two nodes writes the underlying call for you. The graph and the code always stay in sync — one is never out of date with the other.
+- **Import your own code** — drop in an existing file and Blockline will recognize what it can (functions, familiar patterns) and turn it into nodes, while anything it doesn't recognize stays as readable, editable raw code instead of breaking.
+- **Smart slots** — start typing in a block's input, and if what you type matches a recognizable pattern, it snaps into structured sub-blocks automatically. If not, it just stays as plain text — no dead ends.
+
+This is still in the planning/build phase, not shipped yet — but it's the direction Blockline is heading: less "block editor bolted onto code," more "visual and written code as two views of the same thing."
 
 ## Future Vision
 
 Blockline aims to become a bridge between visual programming and traditional development.
 
-Not a toy programming tool.
-Not a replacement for code.
-A different way to create software.
+> Not a toy programming tool. Not a replacement for code. A different way to create software.
+
+## Contributing
+
+Blockline is early — architecture and design decisions are still open. If you're interested in visual programming, language tooling, or code generation, watch the repo or open an issue with ideas.
 
 ## License
 
-MIT
+[MIT](LICENSE)
+
+
 <img width="1366" height="696" alt="Blockline 2026-08-24 18-43-52" src="https://github.com/user-attachments/assets/94a86123-9b0a-4232-a3a9-a947dd7ef94f" />
 <img width="1920" height="1080" alt="Blockline" src="https://github.com/user-attachments/assets/b878a455-ffbd-4e1c-a40d-a6f50821a985" />
