@@ -57,14 +57,14 @@ Advanced users can build custom templates, custom logic blocks, and custom langu
 ## Roadmap
 
 **Core System**
-- [ ] Block editor
-- [ ] Code generation system
-- [ ] Language template system
+- [X] Block editor
+- [X] Code generation system
+- [X] Language template system
 - [ ] Project management
 
 **Advanced Features**
 - [ ] Code importing
-- [ ] Code-to-block conversion
+- [X] Code-to-block conversion
 - [ ] Plugin system
 - [ ] Custom language support
 
